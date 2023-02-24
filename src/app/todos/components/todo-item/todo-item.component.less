@@ -1,0 +1,37 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.buttons {
+  margin-left: auto;
+}
+
+.tui-form__buttons {
+  display: flex;
+  margin: 15px 0 30px;
+}
+
+.tile {
+  height: 56px;
+  display: block;
+}
+
+@media @tui-mobile {
+  .tile_tall {
+    --tui-height: 2;
+  }
+}
+
+.content {
+  .transition(box-shadow);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: var(--tui-base-01);
+  border-radius: var(--tui-radius-l);
+  border: 1px solid var(--tui-base-03);
+  cursor: pointer;
+
+  tui-tile._dragged & {
+    .shadow(5);
+  }
+}

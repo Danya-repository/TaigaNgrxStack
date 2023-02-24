@@ -1,0 +1,28 @@
+<div class="tui-container">
+    <div class="tui-form__row">
+      <tui-input tuiTextfieldExampleText="Field placeholder" [formControl]="newTodoText">
+        Введите дело для органайзера
+      </tui-input>
+    </div>
+    <div class="tui-form__buttons">
+      <button
+        tuiButton
+        size="l"
+        type="submit"
+        class="tui-form__button"
+        (click)="onAddTodo()"
+      >
+        Добавить дело
+      </button>
+      <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        size="l"
+        class="tui-form__button"
+        (click)="newTodoText.reset()"
+      >
+        Сбросить
+      </button>
+    </div>
+</div>
