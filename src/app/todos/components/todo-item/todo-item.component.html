@@ -1,25 +1,72 @@
-<tui-tile tuiTileHandle class="tile" [style.order]="0">
+<div class="tui-container todo-item">
   <div class="content">
-    <span>Малина</span>
+    <span [style.textDecoration]="todoData.completed ? 'line-through' : 'none'">
+      {{todoData.id + 1}}
+    </span>
+    <span [style.textDecoration]="todoData.completed ? 'line-through' : 'none'" class="todo-item__text" *ngIf="!todoData.editMode; else inputText">
+      {{todoData.text}}
+    </span>
+    <ng-template #inputText>
+      <span>
+        <tui-input
+          tuiTextfieldSize="m"
+          [formControl]="editControl"
+        >
+        Введите новое значение
+        <input tuiTextfield type="text">
+      </tui-input>
+      </span>
+    </ng-template>
+
+    <span>
+      <tui-checkbox [formControl]="checkBox" (click)="onComplete($event)"></tui-checkbox>
+    </span>
     <div class="buttons">
-      <button
-        tuiButton
-        type="button"
-        appearance="flat"
-        size="s"
-        class="tui-form__button"
-      >
-        Редактировать
-      </button>
-      <button
-        tuiButton
-        type="button"
-        appearance="flat"
-        size="s"
-        class="tui-form__button"
-      >
-        Сбросить
-      </button>
+      <ng-container *ngIf="!todoData.editMode; else editButtons">
+        <button
+          tuiButton
+          type="button"
+          appearance="flat"
+          size="s"
+          class="tui-form__button"
+          (click)="onEdit()"
+          [disabled]="todoData.completed"
+        >
+          Редактировать
+        </button>
+        <button
+          tuiButton
+          type="button"
+          appearance="flat"
+          size="s"
+          class="tui-form__button"
+          (click)="onDelete()"
+        >
+          Удалить
+        </button>
+      </ng-container>
+      <ng-template #editButtons>
+        <button
+          tuiButton
+          type="button"
+          appearance="flat"
+          size="s"
+          class="tui-form__button"
+          (click)="onSaveEdit()"
+        >
+          Сохранить
+        </button>
+        <button
+          tuiButton
+          type="button"
+          appearance="flat"
+          size="s"
+          class="tui-form__button"
+          (click)="onResetEdit()"
+        >
+          Сбросить изменения
+        </button>
+      </ng-template>
     </div>
   </div>
-</tui-tile>
+</div>

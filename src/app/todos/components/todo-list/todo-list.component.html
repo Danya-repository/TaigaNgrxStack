@@ -1,7 +1,5 @@
 <div class="tui-container">
-  <tui-tiles class="tiles">
     <ul class="todo__list">
-      <app-todo-item></app-todo-item>
+      <app-todo-item *ngFor="let todo of todoList" [todoData]="todo"></app-todo-item>
     </ul>
-  </tui-tiles>
 </div>

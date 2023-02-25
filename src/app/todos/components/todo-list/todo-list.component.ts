@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {TodoItem} from "../todo-item/todo-item.component";
 
 @Component({
   selector: 'app-todo-list',
@@ -8,4 +9,6 @@ import { Component } from '@angular/core';
 
 export class TodoListComponent {
 
+  @Input()
+  todoList!: TodoItem[];
 }
